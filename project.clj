@@ -1,4 +1,4 @@
-(defproject sandbar/sandbar "0.4.0-SNAPSHOT"
+(defproject org.clojars.cjschroed/sandbar "0.4.0"
   :description "Clojure web application libraries built on top of Ring
                 and Compojure."
   :url "http://github.com/brentonashworth/sandbar"
@@ -18,5 +18,5 @@
                      [radagast "1.1.0"]
                      [enlive "1.0.0"]
                      [marginalia "0.7.0-SNAPSHOT"]]
-  :hooks [leiningen.hooks.difftest]
+;  :hooks [leiningen.hooks.difftest]
   :radagast/ns-whitelist #"^sandbar.*")

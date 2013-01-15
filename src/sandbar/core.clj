@@ -1,4 +1,6 @@
-;; Copyright (c) Brenton Ashworth. All rights reserved.
+
+<!-- saved from url=(0108)https://raw.github.com/brentonashworth/sandbar/8529699e68dd005370c2a67f3c308103ae69953c/src/sandbar/core.clj -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">;; Copyright (c) Brenton Ashworth. All rights reserved.
 ;; The use and distribution terms for this software are covered by the
 ;; Eclipse Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
 ;; which can be found in the file COPYING at the root of this distribution.
@@ -8,7 +10,8 @@
 
 (ns sandbar.core
   "Common code used throughout Sandbar."
-  (:require [hiccup [page-helpers :as helpers]]))
+  (:require [hiccup [page :as page]
+             [element :as element]]))
 
 ;;
 ;; Working with context paths
@@ -42,7 +45,7 @@
 (defn clink-to
   "Create a link to path, prefixing the path with the context path."
   [path title]
-  (helpers/link-to (cpath path) title))
+  (element/link-to (cpath path) title))
 
 ;;
 ;; Resource location
@@ -126,12 +129,12 @@
 (defn stylesheet
   "Convert a css file name into the correct path to that file."
   [name]
-  (helpers/include-css (str (css-path) name)))
+  (page/include-css (str (css-path) name)))
 
 (defn javascript
   "Convert a javascript file name into the correct path to that file."
   [name]
-  (helpers/include-js (str (js-path) name)))
+  (page/include-js (str (js-path) name)))
 
 (defn icon
   "Create a link to an icon with the correct mime type."
@@ -148,7 +151,7 @@
 (defn image
   "Create an image element or an image with a mouseover."
   ([name] (image name {}))
-  ([name & options]
+  ([name &amp; options]
      (let [attrs (first (filter map? options))
            mouseover (first (filter string? options))
            image-path (image-path)
@@ -168,16 +171,16 @@
   "Create an image link element.
    (image-link x y z) is the same as (clink-to x (image y z))."
   ([path name] (image-link path name {:alt name})) 
-  ([path name & options]
+  ([path name &amp; options]
     (clink-to path (apply image name options))))
 
 (defmacro link-to-js
   "Create a link that will call a javascript function."
-  [& args]
+  [&amp; args]
   (let [[form title qualifier] args
         function (str (name (first form)))
         args (rest form)]
-    `(helpers/link-to
+    `(element/link-to
       (str "javascript:"
            ~function
            (when ~qualifier
@@ -191,3 +194,4 @@
                                   [~@args])))
            ");") ~title)))
 
+</pre></body></html>

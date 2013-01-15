@@ -1,7 +1,8 @@
-(defproject org.clojars.cjschroed/sandbar "0.4.1"
+(defproject org.clojars.cjschroed/sandbar "0.4.3"
   :description "Clojure web application libraries built on top of Ring
                 and Compojure."
   :url "http://github.com/brentonashworth/sandbar"
+	:repl-init sandbar.core
   :dependencies [[org.clojure/clojure "1.3.0"]
                  [org.clojure/data.json "0.1.2"]
                  [ring/ring-core "1.0.1"]

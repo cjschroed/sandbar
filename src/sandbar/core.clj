@@ -1,6 +1,3 @@
-
-<!-- saved from url=(0108)https://raw.github.com/brentonashworth/sandbar/8529699e68dd005370c2a67f3c308103ae69953c/src/sandbar/core.clj -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">;; Copyright (c) Brenton Ashworth. All rights reserved.
 ;; The use and distribution terms for this software are covered by the
 ;; Eclipse Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
 ;; which can be found in the file COPYING at the root of this distribution.
@@ -151,7 +148,7 @@
 (defn image
   "Create an image element or an image with a mouseover."
   ([name] (image name {}))
-  ([name &amp; options]
+  ([name & options]
      (let [attrs (first (filter map? options))
            mouseover (first (filter string? options))
            image-path (image-path)
@@ -171,12 +168,12 @@
   "Create an image link element.
    (image-link x y z) is the same as (clink-to x (image y z))."
   ([path name] (image-link path name {:alt name})) 
-  ([path name &amp; options]
+  ([path name & options]
     (clink-to path (apply image name options))))
 
 (defmacro link-to-js
   "Create a link that will call a javascript function."
-  [&amp; args]
+  [& args]
   (let [[form title qualifier] args
         function (str (name (first form)))
         args (rest form)]
@@ -194,4 +191,3 @@
                                   [~@args])))
            ");") ~title)))
 
-</pre></body></html>
